@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+.container {
+  width: 398px;
+  height: 488px;
+  position: relative;
+  -webkit-perspective: 1000px;
+}
+
+#cube {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+}
+
+#cube figure, #cube canvas {
+  width: 196px;
+  height: 196px;
+  display: block;
+  position: absolute;
+  font-size: 10.5em;
+  text-align: center;
+  margin:0;
+  padding:0;
+  -webkit-backface-visibility: hidden;
+}
+
+
+#cube .right{
+	background: white url(imgs/side.png) repeat-x;
+}
+
+#cube .front , #cube .back{
+	width: 398px;
+	height: 488px;
+} 
+
+#cube .right, #cube .left{
+	margin-top: 132px;
+	height: 314px;
+}
+
+#cube .back{
+	background: url(imgs/back.png)
+}
+
+#cube .front  { 
+	-webkit-transform: rotateY(   0deg ) translateZ( 100px ); 
+}
+#cube .back   { 
+	-webkit-transform: rotateY( 180deg ) translateZ( 100px ); 
+}
+#cube .right  { 
+	-webkit-transform: rotateY(  90deg ) translateZ( 298px ); 
+}
+
+#cube .left   { 
+	-webkit-transform: rotateY( -90deg ) translateZ( 100px ); 
+}
+
+
+#cube { 
+	-webkit-transition: -webkit-transform 1000ms ease;
+	-webkit-transform: translateZ(-100px);
+}
+
+
+#cube.show-back   { 
+	-webkit-transform: translateZ( -100px ) rotateY( -45deg ); 
+}
+
+#cube.show-back .right { 
+
+}
+
+
+
+
+</style>
+<script type="text/javascript">
+function spin() {
+	document.getElementById("cube").className = "show-back"
+};
+
+
+window.onload = function(){	
+
+	// Grab the Canvas and Drawing Context
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	var load = ["imgs/tv.png","imgs/back.png","imgs/landscape.png"];
+	var images = {};
+	var loaded = 0;
+	var extension_and_dir = /\.[^.]+$|^.*\//g;
+	// Create an image element
+	// Create an image element
+
+	console.log("WUT?")
+
+	load.forEach(function(url) {
+		var img = new Image();
+		img.onload = function () {
+			images[url.replace(extension_and_dir,"")] = img;
+			loaded++;
+			if(loaded !== load.length){
+				return;
+			}		
+			console.log(images) 
+		    // Save the state, so we can undo the clipping
+		    ctx.save();
+		 
+		    // Create a shape, of some sort
+		    
+		    var timeoff = 0;
+		    ctx.drawImage(images.tv,0,0);
+		    setTimeout(function() {
+			    var animation = setInterval(function() {
+			    	if(timeoff>1000)
+			    		clearInterval(animation)
+			    	ctx.save();
+			    	timeoff += 10;
+				    ctx.beginPath();
+				    ctx.moveTo(0, 0);
+				    ctx.lineTo(timeoff, 0);
+				    ctx.lineTo(-256 + timeoff, 512);	
+				    ctx.lineTo(0, 512);
+				    ctx.closePath();
+				    ctx.clip();
+				    ctx.drawImage(images.landscape, 0, 0);
+				    ctx.restore();
+
+			    },20)
+		    },1000)
+
+		}
+		img.src = url
+	})
+
+
+}	
+	 
+	// When the image is loaded, draw it
+
+	// Specify the src to load the image
+	</script>
+</script>
+</head>
+
+<body>
+	<section class="container">
+	  <div id="cube">
+	    <canvas width="398" height="488" id="canvas" class="front"></canvas>
+	    <figure class="back"></figure>
+	    <figure class="right"></figure>
+	    <figure class="left"></figure>
+	  </div>
+	</section>
+	<br><br><br>
+	<a style="position:absolute; z-index:10;" onClick="spin();return false;">Turn</a>
+
+	</body>
+</html>

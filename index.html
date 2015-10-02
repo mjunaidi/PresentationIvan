@@ -1,0 +1,354 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ivan Castellanos</title>
+<style type="text/css">
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Ends reset */
+
+body{
+	font-family: 'Dosis', sans-serif;
+}
+
+html,body {
+	height:100%; /* needed for container min-height */
+	overflow: hidden;
+}
+
+
+#container{
+	font-size:70px;
+	padding: 10%;
+	height:80%;
+	min-height:80%;
+	min-width:80%;
+	width:80%;
+	white-space: pre-wrap;	
+}
+
+
+#container.cm-s-ambiance{
+	font-size:28px;
+}
+
+
+#foto {
+	position: absolute;
+	border-radius: 6px;
+	top: 0;
+	box-shadow: 4px 4px 23px 
+	rgba(67, 50, 50, 0.7);
+	right: 0;
+	border: 11px solid white;
+	display:block;
+}
+
+#flecha {
+	position: absolute;
+	display: block;
+	top: 320px;
+	right: 298px;
+}
+
+a {
+	color:black;
+	-webkit-transition:color 1s ease-out;
+	-moz-transition:color 1s ease-out;
+	-o-transition:color 1s ease-out;
+	color: green;
+}
+
+a:hover {
+	color: #ADFF2F;
+	-webkit-transition:color .5s ease-out;
+	-moz-transition:color .5s ease-out;
+	-o-transition:color .5s ease-out;
+}
+
+a:hover{
+
+}
+
+.warning{
+	font-size: 35px;
+	text-align: center;
+	line-height: 50px;
+	padding-top: 40px;
+}
+
+</style>
+
+
+<style>
+
+
+.container {
+	width: 398px;
+	height: 399px;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	-o-perspective: 1000px;
+}
+
+#aniwrapper{
+	line-height: 0;
+	opacity:0;
+	top: 32%;
+	left: 50%;
+	margin-left: -199px;
+	width: 398px;
+  	height: 399px;
+  	position: absolute;
+}
+
+.center{
+	text-align: center;
+}
+
+#cube {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+}
+
+#cube figure, #cube canvas {
+  width: 196px;
+  height: 196px;
+  display: block;
+  position: absolute;
+  font-size: 10.5em;
+  text-align: center;
+  margin:0;
+  padding:0;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+}
+
+
+#cube .right{
+	background: white url(imgs/side.png) repeat-x;
+}
+
+#cube .front , #cube .back{
+	width: 398px;
+	height: 399px;
+} 
+
+#cube .right, #cube .left{
+	margin-top: 43px;
+	height: 314px;
+}
+
+#cube .back{
+	background: url(imgs/back.png)
+}
+
+#cube .front  { 
+	-webkit-transform: rotateY(   0deg ) translateZ( 100px ); 
+	-moz-transform: rotateY(   0deg ) translateZ( 100px ); 
+	-o-transform: rotateY(   0deg ) translateZ( 100px ); 
+}
+#cube .back   { 
+	-webkit-transform: rotateY( 180deg ) translateZ( 100px ); 
+	-moz-transform: rotateY( 180deg ) translateZ( 100px ); 
+	-o-transform: rotateY( 180deg ) translateZ( 100px ); 
+}
+#cube .right  { 
+	-webkit-transform: rotateY(  90deg ) translateZ( 298px ); 
+	-moz-transform: rotateY(  90deg ) translateZ( 298px ); 
+	-o-transform: rotateY(  90deg ) translateZ( 298px ); 
+}
+
+#cube .left   { 
+	-webkit-transform: rotateY( -90deg ) translateZ( 100px ); 
+	-moz-transform: rotateY( -90deg ) translateZ( 100px ); 
+	-o-transform: rotateY( -90deg ) translateZ( 100px ); 
+}
+
+
+#cube { 
+	-webkit-transition: -webkit-transform 1000ms ease;
+	-moz-transition: -moz-transform 1000ms ease;
+	-o-transition: -o-transform 1000ms ease;
+	-webkit-transform: translateZ(-100px);
+	-moz-transform: translateZ(-100px) rotateY(0deg);
+	-o-transform: translateZ(-100px);
+}
+
+
+#cube.show-back   { 
+	-webkit-transform: translateZ( -100px ) rotateY( -180deg ); 
+	-moz-transform: translateZ( -100px ) rotateY( -180deg ); 
+	-o-transform: translateZ( -100px ) rotateY( -180deg ); 
+}
+
+#cube.show-back .right { 
+
+}
+
+#brush{
+	position: absolute;
+	left: -230px;
+	z-index: 10;
+	top: -19px;
+}
+
+#mask{
+	border-radius: 33px;
+	top: 59px;
+	z-index: 11;
+	width: 288px;
+	height: 287px;
+	display: block;
+	position: absolute;
+	left: 50px;
+	overflow: hidden;
+}
+
+#sub-mask{
+	width: 288px;
+	height: 287px;
+	border-radius: 33px;
+	overflow: hidden;
+	-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+#gear_a, #gear_b{
+	width: 380px;
+	height: 367px;
+	position: relative;
+	position: absolute;
+	width: 380px;
+	height: 367px;
+	top: 0;
+	left: 0;
+}
+
+#gear_b{
+	background: url(imgs/gear_b.png) no-repeat;
+}
+
+#gear_a{
+	background: url(imgs/gear_a.png) no-repeat;
+}
+
+
+#gear_code{
+	width: 177px;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	padding: 19px;
+	right: 187px;
+	top: 112px;
+	font-family: "Courier New", monospace;
+	line-height: 26px;
+	display: block;
+	color: #8ECC8E;
+	position: absolute;
+	font-size: 17px;
+	background: black;
+	z-index: 0;
+	opacity: 0;
+	min-height: 68px;
+
+}
+
+.binary{
+	position: absolute;
+	font-family: monospace, "Times New Roman", Times, serif;
+	font-size: 23px;
+}
+
+.yellow{
+	color:yellow;
+}
+
+#bulb{
+	left: 139px;
+	position: absolute;
+	top: 140px;
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Dosis:300' rel='stylesheet' type='text/css'>
+
+<link type='text/css' rel='stylesheet' href="libs/codemirror.css">
+<link type='text/css' rel='stylesheet' href="libs/ambiance.css">
+<script src="libs/jquery.transit.min.js"></script>
+<script src="libs/codemirror.js"></script>
+<script src="libs/runmode.js"></script>
+<script src="libs/javascript.js"></script>
+<script src="libs/coffeescript.js"></script>
+<script src="libs/python.js"></script>
+<script src="libs/css.js"></script>
+<script src="libs/clike.js"></script>
+<script src="libs/xml.js"></script>
+<script src="libs/php.js"></script>
+
+
+
+
+</head>
+
+<body>
+	<pre id="container">		
+	</pre>
+	<script src="main.js"></script>
+
+</body>
+</html>
+<script src="libs/python.js"></script>
